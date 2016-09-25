@@ -44,3 +44,9 @@ service apache2 restart
 ```
 
 ## Templates erstellen
+```bash
+cd /usr/local/vesta/data/templates/web/apache2
+wget http://git.scit.ch/rs/VestaCP-MultiPHP/blob/master/VestaCP-MultiPHP.tar.gz
+tar xfvz VestaCP-MultiPHP.tar.gz
+rm VestaCP-MultiPHP.tar.gz
+```
