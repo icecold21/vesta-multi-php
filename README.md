@@ -1,10 +1,11 @@
 # VestaCP - MultiPHP
 ## Abhängigkeiten installieren
+```bash
 apt-get install libssl-dev libxml2-dev pkg-config libssl-dev libsslcommon2-dev libbz2-dev libcurl3-dev libmysqlclient15-dev libgdbm-dev libjpeg62 libjpeg62-dev libpng12-0 libpng12-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libtidy-0.99-0 libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libt1-dev libicu-dev libreadline-dev
 
 mkdir /usr/include/freetype2/freetype
 ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h
-
+```
 ## PHPBrew installieren
 curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
 chmod +x phpbrew
