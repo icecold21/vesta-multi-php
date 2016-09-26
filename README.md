@@ -57,9 +57,10 @@ tar xfvz VestaCP-MultiPHP.tar.gz
 rm VestaCP-MultiPHP.tar.gz
 ```
 
-## MultiPHP einsetzen
+## Use the MultiPHP Modification
 ```bash
--> unter WEB -> Apache2 -> PHP53, PHP54 oder PHP70 auswählen.
+-> go to WEB -> your Domain -> Apache2 -> and chose the PHP Version (PHP53, PHP54 or PHP70) -> Save
 
+# That it creates the needed cgi-bin file, you have to run a full rebuild of the user (from Web or CommandLine).
 v-user-rebuild username
 ```
