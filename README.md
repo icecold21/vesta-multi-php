@@ -50,3 +50,10 @@ wget http://git.scit.ch/rs/VestaCP-MultiPHP/blob/master/VestaCP-MultiPHP.tar.gz
 tar xfvz VestaCP-MultiPHP.tar.gz
 rm VestaCP-MultiPHP.tar.gz
 ```
+
+## MultiPHP einsetzen
+```bash
+-> unter WEB -> Apache2 -> PHP53, PHP54 oder PHP70 auswählen.
+
+v-user-rebuild username
+```
