@@ -1,12 +1,14 @@
 # VestaCP - MultiPHP
-## Abhängigkeiten installieren
+This a little rewrite of the idea from Peter Anikin (http://anikin.pw/all/multiversionnost-php-n-aservere-s-vestacp/).
+## Install Dependencies
 ```bash
 apt-get install libssl-dev libxml2-dev pkg-config libssl-dev libsslcommon2-dev libbz2-dev libcurl3-dev libmysqlclient15-dev libgdbm-dev libjpeg62 libjpeg62-dev libpng12-0 libpng12-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libtidy-0.99-0 libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libt1-dev libicu-dev libreadline-dev
 
+# Small Modification for PHP 5.3/5.4 Compilation (http://stackoverflow.com/a/26342869)
 mkdir /usr/include/freetype2/freetype
 ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h
 ```
-## PHPBrew installieren
+## Install and Config of PHPBrew
 ```bash
 curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
 chmod +x phpbrew
@@ -21,29 +23,33 @@ phpbrew update
 phpbrew update --old
 ```
 
-## PHP Pakete kompilieren
+## Compiling PHP Packages with needed Modules
 ```bash
+# PHP 5.3
 phpbrew install 5.3 +default +openssl=shared -- --with-openssl-dir=/usr/include/openssl --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-mysql=mysqlnd --with-mysqli=mysqlnd --enable-pdo --with-pdo-mysql=mysqlnd --enable-exif --with-jpeg-dir=/usr --with-png-dir=/usr --with-freetype-dir=/usr --with-t1lib --with-zlib-dir=/usr --with-mcrypt=/usr --with-mhash --with-xsl=/usr --enable-zip --enable-cgi --with-curl --with-gd --enable-pcntl --enable-mbregex --enable-gd-native-ttf --with-libdir=lib64 --enable-dba=shared --enable-intl --with-readline=/usr --enable-simplexml \--enable-soap --enable-zip --with-mhash=yes --enable-shmop --enable-sockets --enable-wddx --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-cdb --with-iconv --enable-exif --enable-ftp --with-gettext --with-pic
 
+# PHP 5.4
 phpbrew install 5.4 +default +openssl=shared -- --with-openssl-dir=/usr/include/openssl --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-mysql=mysqlnd --with-mysqli=mysqlnd --enable-pdo --with-pdo-mysql=mysqlnd --enable-exif --with-jpeg-dir=/usr --with-png-dir=/usr --with-freetype-dir=/usr --with-t1lib --with-zlib-dir=/usr --with-mcrypt=/usr --with-mhash --with-xsl=/usr --enable-zip --enable-cgi --with-curl --with-gd --enable-pcntl --enable-mbregex --enable-gd-native-ttf --with-libdir=lib64 --enable-dba=shared --enable-intl --with-readline=/usr --enable-simplexml \--enable-soap --enable-zip --with-mhash=yes --enable-shmop --enable-sockets --enable-wddx --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-cdb --with-iconv --enable-exif --enable-ftp --with-gettext --with-pic
 
+# PHP 7.0
 phpbrew install 7.0 +default +openssl=shared -- --with-openssl-dir=/usr/include/openssl --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-mysql=mysqlnd --with-mysqli=mysqlnd --enable-pdo --with-pdo-mysql=mysqlnd --enable-exif --with-jpeg-dir=/usr --with-png-dir=/usr --with-freetype-dir=/usr --with-t1lib --with-zlib-dir=/usr --with-mcrypt=/usr --with-mhash --with-xsl=/usr --enable-zip --enable-cgi --with-curl --with-gd --enable-pcntl --enable-mbregex --enable-gd-native-ttf --with-libdir=lib64 --enable-dba=shared --enable-intl --with-readline=/usr --enable-simplexml \--enable-soap --enable-zip --with-mhash=yes --enable-shmop --enable-sockets --enable-wddx --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-cdb --with-iconv --enable-exif --enable-ftp --with-gettext --with-pic
 ```
 
-## Symlinks erstellen
+## Create Symlinks
 ```bash
 ln -s /usr/local/php/php/php-5.3.29 /usr/local/php/php53
 ln -s /usr/local/php/php/php-5.4.45 /usr/local/php/php54
 ln -s /usr/local/php/php/php-7.0.11 /usr/local/php/php70
 ```
 
-## Apache Module aktivieren
+## Enable needed Apache Modules
 ```bash
 a2enmod actions cgi
 service apache2 restart
 ```
 
-## Templates erstellen
+## Create VestaCP Templates
+You can do this also manualy, just copy the phpcgi.stpl, phpcgi.tpl and phpcgi.sh files in your VestaCP Template folder and modify the yourname.sh file to your needed configuration.
 ```bash
 cd /usr/local/vesta/data/templates/web/apache2
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/blob/master/VestaCP-MultiPHP.tar.gz
