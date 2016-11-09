@@ -94,6 +94,10 @@ wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/ve
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php70.sh -O /usr/local/vesta/data/templates/web/apache2/php70.sh
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php70.tpl
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php70.stpl
+
+# Update Owner and Permissions
+chown 501:501 /usr/local/vesta/data/templates/web/apache2/*
+chmod 755 /usr/local/vesta/data/templates/web/apache2/*
 ```
 
 ## Use the MultiPHP Modification
