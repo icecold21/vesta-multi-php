@@ -2,7 +2,7 @@
 This a little rewrite of the idea from Peter Anikin (http://anikin.pw/all/multiversionnost-php-n-aservere-s-vestacp/).
 ## Install Dependencies
 ```bash
-apt-get install libssl-dev libxml2-dev pkg-config libssl-dev libsslcommon2-dev libbz2-dev libcurl3-dev libmysqlclient15-dev libgdbm-dev libjpeg62 libjpeg62-dev libpng12-0 libpng12-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libtidy-0.99-0 libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libt1-dev libicu-dev libreadline-dev
+apt-get install build-essential libssl-dev libxml2-dev pkg-config libssl-dev libsslcommon2-dev libbz2-dev libcurl3-dev libmysqlclient15-dev libgdbm-dev libjpeg62 libjpeg62-dev libpng12-0 libpng12-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libtidy-0.99-0 libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libt1-dev libicu-dev libreadline-dev
 
 # Small Modification for PHP 5.3/5.4 Compilation (http://stackoverflow.com/a/26342869)
 mkdir /usr/include/freetype2/freetype
