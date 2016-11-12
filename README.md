@@ -55,7 +55,7 @@ ln -s /usr/local/php/php/php-5.4.45 /usr/local/php/php54
 ln -s /usr/local/php/php/php-5.5.38 /usr/local/php/php55
 
 # PHP 5.6
-ln -s /usr/local/php/php/php-5.6.27 /usr/local/php/php56
+ln -s /usr/local/php/php/php-5.6.28 /usr/local/php/php56
 
 # PHP 7.0
 ln -s /usr/local/php/php/php-7.0.12 /usr/local/php/php70
