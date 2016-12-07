@@ -35,6 +35,7 @@ mkdir /usr/local/sslold
 make
 make install
 ```
+Then change --with-openssl-dir=/usr/include/openssl to --with-openssl-dir=/usr/local/sslold and compile.
 
 ## Compiling PHP Packages with needed Modules
 You don't need to install all Versions, just choose that Version you want to have installed.
