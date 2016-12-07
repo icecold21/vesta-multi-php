@@ -22,6 +22,19 @@ export PHPBREW_ROOT=/usr/local/php
 phpbrew update
 phpbrew update --old
 ```
+## Ubuntu 16.04 / PHP 5.3 only!
+For Ubuntu 16.04 you need to install an older OpenSSL Libary, if not it will throw out an error during compilation.
+
+```bash
+cd /usr/src
+wget https://www.openssl.org/source/openssl-0.9.8zb.tar.gz
+tar xfvz openssl-0.9.8zb.tar.gz
+cd openssl-0.9.8zb
+mkdir /usr/local/sslold
+./config --prefix=/usr/local --openssldir=/usr/local/sslold
+make
+make install
+```
 
 ## Compiling PHP Packages with needed Modules
 You don't need to install all Versions, just choose that Version you want to have installed.
