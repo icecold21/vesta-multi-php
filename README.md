@@ -72,7 +72,7 @@ ln -s /usr/local/php/php/php-5.5.38 /usr/local/php/php55
 ln -s /usr/local/php/php/php-5.6.28 /usr/local/php/php56
 
 # PHP 7.0
-ln -s /usr/local/php/php/php-7.0.12 /usr/local/php/php70
+ln -s /usr/local/php/php/php-7.0.14 /usr/local/php/php70
 ```
 
 ## Enable needed Apache Modules
