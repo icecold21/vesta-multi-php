@@ -54,7 +54,12 @@ phpbrew install 5.6 +default +openssl=shared -- --with-openssl-dir=/usr/include/
 
 # PHP 7.0
 phpbrew install 7.0 +default +openssl=shared -- --with-openssl-dir=/usr/include/openssl --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-mysql=mysqlnd --with-mysqli=mysqlnd --enable-pdo --with-pdo-mysql=mysqlnd --enable-exif --with-jpeg-dir=/usr --with-png-dir=/usr --with-freetype-dir=/usr --with-zlib-dir=/usr --with-mcrypt=/usr --with-mhash --with-xsl=/usr --enable-zip --enable-cgi --with-curl --with-gd --enable-pcntl --enable-mbregex --enable-gd-native-ttf --with-libdir=lib64 --enable-dba=shared --enable-intl --with-readline=/usr --enable-simplexml \--enable-soap --enable-zip --with-mhash=yes --enable-shmop --enable-sockets --enable-wddx --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-cdb --with-iconv --enable-exif --enable-ftp --with-gettext --with-pic
+
+# PHP 7.1
+phpbrew install 7.1 +default +openssl=shared -- --with-openssl-dir=/usr/include/openssl --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-mysql=mysqlnd --with-mysqli=mysqlnd --enable-pdo --with-pdo-mysql=mysqlnd --enable-exif --with-jpeg-dir=/usr --with-png-dir=/usr --with-freetype-dir=/usr --with-zlib-dir=/usr --with-mcrypt=/usr --with-mhash --with-xsl=/usr --enable-zip --enable-cgi --with-curl --with-gd --enable-pcntl --enable-mbregex --enable-gd-native-ttf --with-libdir=lib64 --enable-dba=shared --enable-intl --with-readline=/usr --enable-simplexml \--enable-soap --enable-zip --with-mhash=yes --enable-shmop --enable-sockets --enable-wddx --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-cdb --with-iconv --enable-exif --enable-ftp --with-gettext --with-pic
 ```
+
+
 
 ## Create Symlinks
 Symlink only needed for installed PHP Versions, PHP Version (php-x.x.xx) may be different.
@@ -73,6 +78,9 @@ ln -s /usr/local/php/php/php-5.6.28 /usr/local/php/php56
 
 # PHP 7.0
 ln -s /usr/local/php/php/php-7.0.14 /usr/local/php/php70
+
+# PHP 7.0
+ln -s /usr/local/php/php/php-7.1.6 /usr/local/php/php71
 ```
 
 ## Enable needed Apache Modules
@@ -108,6 +116,11 @@ wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/ve
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php70.sh -O /usr/local/vesta/data/templates/web/apache2/php70.sh
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php70.tpl
 wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php70.stpl
+
+# PHP 7.0
+wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php71.sh -O /usr/local/vesta/data/templates/web/apache2/php71.sh
+wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php71.tpl
+wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php71.stpl
 
 # Update Owner and Permissions
 chmod 755 /usr/local/vesta/data/templates/web/apache2/*
