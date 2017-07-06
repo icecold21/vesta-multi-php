@@ -79,7 +79,7 @@ ln -s /usr/local/php/php/php-5.6.28 /usr/local/php/php56
 # PHP 7.0
 ln -s /usr/local/php/php/php-7.0.14 /usr/local/php/php70
 
-# PHP 7.0
+# PHP 7.1
 ln -s /usr/local/php/php/php-7.1.6 /usr/local/php/php71
 ```
 
