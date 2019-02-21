@@ -166,10 +166,12 @@ v-user-rebuild username
 
 Validating installation
 1. Create website
-2. Replace index.html with index.php
+2. Modify website to use proper template. e.g php 5.7
+3. Replace index.html with index.php
 ```php
 <?php
   $result = shell_exec('lsb_release -a');
   echo "<pre>$result</pre>";
   phpinfo();
 ```
+4. Visit the site and verify configuration is working
