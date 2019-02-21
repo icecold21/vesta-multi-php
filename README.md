@@ -1,13 +1,22 @@
+Fork of https://git.scit.ch/rs/VestaCP-MultiPHP - Supports Ubuntu 18.04
+
 # VestaCP - MultiPHP
 This a little rewrite of the idea from Peter Anikin (http://anikin.pw/all/multiversionnost-php-n-aservere-s-vestacp/).
 ## Install Dependencies
 ```bash
+Ubuntu 18.04
+sudo apt update
+sudo apt-get install wget build-essential libssl-dev libxml2-dev pkg-config libssl-dev  libbz2-dev libcurl4-openssl-dev libmysqlclient-dev libgdbm-dev libjpeg62 libjpeg62-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libicu-dev libreadline-dev autoconf
+
+Ubuntu Older
 apt-get install build-essential libssl-dev libxml2-dev pkg-config libssl-dev libsslcommon2-dev libbz2-dev libcurl4-openssl-dev libmysqlclient-dev libgdbm-dev libjpeg62 libjpeg62-dev libpng12-0 libpng12-dev libxml2 libxml2-dev libmcrypt4 libmcrypt-dev libmhash2 libmhash-dev libmm-dev libmm14 libtidy-dev libtidy-0.99-0 libxslt1-dev libxslt1.1 libfreetype6 libfreetype6-dev libicu-dev libreadline-dev
 
 # Small Modification for PHP 5.3/5.4 Compilation (http://stackoverflow.com/a/26342869)
 mkdir /usr/include/freetype2/freetype
 ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h
 ```
+
+
 ## Install and Config of PHPBrew
 ```bash
 curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
@@ -36,6 +45,26 @@ make
 make install
 ```
 Then change --with-openssl-dir=/usr/include/openssl to --with-openssl-dir=/usr/local/sslold and compile.
+
+## Ubuntu 18.04 & PHP 5.x only!
+
+```bash
+# fix configure: error: Please reinstall the libcurl distribution - easy.h should be in <curl-dir>/include/curl/
+# because of this bug https://github.com/phpbrew/phpbrew/issues/861
+# we need to do this
+sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/include/curl
+
+cd /usr/src
+wget https://www.openssl.org/source/openssl-1.0.2o.tar.gz
+tar -xzvf openssl-1.0.2o.tar.gz
+pushd openssl-1.0.2o
+./config -fPIC shared --prefix=/usr/local --openssldir=/usr/local/openssl
+make
+make test
+sudo make install
+popd
+```
+Then change --with-openssl-dir=/usr/include/openssl to --with-openssl-dir=/usr/local/openssl and compile.
 
 ## Compiling PHP Packages with needed Modules
 You don't need to install all Versions, just choose that Version you want to have installed.
@@ -93,34 +122,34 @@ service apache2 restart
 You can do this also manualy, just copy the phpcgi.stpl, phpcgi.tpl and phpcgi.sh files in your VestaCP Template folder and modify the yourname.sh file to your needed configuration. Please do only download the Tempaltes for installed PHP Versions.
 ```bash
 # PHP 5.3
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php53.sh -O /usr/local/vesta/data/templates/web/apache2/php53.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php53.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php53.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php53.sh -O /usr/local/vesta/data/templates/web/apache2/php53.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php53.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php53.stpl
 
 # PHP 5.4
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php54.sh -O /usr/local/vesta/data/templates/web/apache2/php54.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php54.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php54.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php54.sh -O /usr/local/vesta/data/templates/web/apache2/php54.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php54.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php54.stpl
 
 # PHP 5.5
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php55.sh -O /usr/local/vesta/data/templates/web/apache2/php55.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php55.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php55.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php55.sh -O /usr/local/vesta/data/templates/web/apache2/php55.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php55.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php55.stpl
 
 # PHP 5.6
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php56.sh -O /usr/local/vesta/data/templates/web/apache2/php56.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php56.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php56.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php56.sh -O /usr/local/vesta/data/templates/web/apache2/php56.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php56.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php56.stpl
 
 # PHP 7.0
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php70.sh -O /usr/local/vesta/data/templates/web/apache2/php70.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php70.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php70.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php70.sh -O /usr/local/vesta/data/templates/web/apache2/php70.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php70.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php70.stpl
 
 # PHP 7.0
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php71.sh -O /usr/local/vesta/data/templates/web/apache2/php71.sh
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php71.tpl
-wget http://git.scit.ch/rs/VestaCP-MultiPHP/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php71.stpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php71.sh -O /usr/local/vesta/data/templates/web/apache2/php71.sh
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.tpl -O /usr/local/vesta/data/templates/web/apache2/php71.tpl
+wget https://github.com/icecold21/vesta-multi-php/raw/master/php.stpl -O /usr/local/vesta/data/templates/web/apache2/php71.stpl
 
 # Update Owner and Permissions
 chmod 755 /usr/local/vesta/data/templates/web/apache2/*
@@ -132,4 +161,15 @@ chmod 755 /usr/local/vesta/data/templates/web/apache2/*
 
 # That it creates the needed cgi-bin file, you have to run a full rebuild of the user (from Web or CommandLine).
 v-user-rebuild username
+```
+
+
+Validating installation
+1. Create website
+2. Replace index.html with index.php
+```php
+<?php
+  $result = shell_exec('lsb_release -a');
+  echo "<pre>$result</pre>";
+  phpinfo();
 ```
